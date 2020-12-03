@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CellularAutomataMaze"
         mc:Ignorable="d"
-        Title="CellularAutomataMazeGenerator" Height="520" Width="800"
+        Title="CellularAutomataMazeGenerator" Height="550" Width="800"
         MouseWheel="Window_MouseWheel" MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         MouseLeftButtonUp="Window_MouseLeftButtonUp" MouseMove="Window_MouseMove">
     <DockPanel>
@@ -41,7 +41,11 @@
             <StackPanel DockPanel.Dock="Top">
                 <Button x:Name="btnGenerate" Content="Generate" Click="btnGenerate_Click" Margin="25"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Show progress:"/>
+                    <Label Content="Break calculations:" Width="110"/>
+                    <CheckBox x:Name="checkBoxBreakCalculations" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Show progress:" Width="110"/>
                     <CheckBox x:Name="checkBoxShowProgress" Margin="6"/>
                 </StackPanel>
             </StackPanel>

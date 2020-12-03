@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,7 +50,7 @@ namespace CellularAutomataMaze
 
             cellularAutomata = new CellularAutomata(bornConditions.ToArray(), surviveConditions.ToArray(), dimX, dimY);
             cellularAutomata.SeedMap(seed, divider);
-            
+
             PrepareCanvas(dimX, dimY);
 
             if (checkBoxShowProgress.IsChecked != null && checkBoxShowProgress.IsChecked == true)
@@ -87,6 +88,11 @@ namespace CellularAutomataMaze
                 if (iterator > maxIterations)
                 {
                     break;
+                }
+                if (checkBoxBreakCalculations.IsChecked != null && checkBoxBreakCalculations.IsChecked == true)
+                {
+                    checkBoxBreakCalculations.IsChecked = false;
+                    return;
                 }
             }
             for (int i = 0; i < dimX; i++)
@@ -135,6 +141,20 @@ namespace CellularAutomataMaze
                     {
                         break;
                     }
+                    bool threadIterruped = false;
+                    checkBoxBreakCalculations.Dispatcher.Invoke(() =>
+                    {
+                        if (checkBoxBreakCalculations.IsChecked != null && checkBoxBreakCalculations.IsChecked == true)
+                        {
+                            checkBoxBreakCalculations.IsChecked = false;
+                            threadIterruped = true;
+                        }
+                    });
+                    if (threadIterruped)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(10);
                 }
             });
         }
