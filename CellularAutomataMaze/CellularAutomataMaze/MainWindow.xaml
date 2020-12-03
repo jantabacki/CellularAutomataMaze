@@ -1,0 +1,57 @@
+﻿<Window x:Class="CellularAutomataMaze.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CellularAutomataMaze"
+        mc:Ignorable="d"
+        Title="CellularAutomataMazeGenerator" Height="520" Width="800"
+        MouseWheel="Window_MouseWheel" MouseLeftButtonDown="Window_MouseLeftButtonDown" 
+        MouseLeftButtonUp="Window_MouseLeftButtonUp" MouseMove="Window_MouseMove">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Left">
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Born conditions:"/>
+                <TextBox x:Name="txtBoxBornConditions" Text="3" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Survive conditions:"/>
+                <TextBox x:Name="txtBoxSurviveConditions" Text="1;2;3;4;5" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="X dimension:"/>
+                <TextBox x:Name="txtBoxDimX" Text="50" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Y dimension:"/>
+                <TextBox x:Name="txtBoxDimY" Text="25" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Seed:"/>
+                <TextBox x:Name="txtBoxSeed" Text="3" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Divider:"/>
+                <TextBox x:Name="txtBoxDivider" Text="10" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Label Content="Max iterations:"/>
+                <TextBox x:Name="txtMaxIterations" Text="150" Margin="5"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <Button x:Name="btnGenerate" Content="Generate" Click="btnGenerate_Click" Margin="25"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Show progress:"/>
+                    <CheckBox x:Name="checkBoxShowProgress" Margin="6"/>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+        <Canvas>
+            <Canvas Canvas.Top="0" Canvas.Left="0" x:Name="mainCanvas">
+                <Canvas.RenderTransform>
+                    <MatrixTransform/>
+                </Canvas.RenderTransform>
+            </Canvas>
+        </Canvas>
+    </DockPanel>
+</Window>
